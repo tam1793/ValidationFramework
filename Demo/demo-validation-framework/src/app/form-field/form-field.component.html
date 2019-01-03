@@ -1,0 +1,36 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="col-8 offset-2">
+  <form [formGroup]="ngForm" (ngSubmit)="submit(ngForm.value)">
+    <div class="form-group">
+      <label for="name">
+        <h3>User's name</h3>
+      </label>
+      <input [class.errorBorder]="errors?.name.length > 0" type="text" class="form-control" formControlName="name" id="name" placeholder="Name">
+      <div *ngIf="errors?.name.length > 0" class="alert alert-danger" role="alert">
+        <span *ngFor="let error of errors?.name">
+          {{error}}
+        </span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="age">
+        <h3>User's age</h3>
+      </label>
+      <input [class.errorBorder]="errors?.age.length > 0" type="number" class="form-control" formControlName="age" id="age" placeholder="Age">
+      <div *ngIf="errors?.age.length > 0" class="alert alert-danger" role="alert">
+        <span *ngFor="let error of errors?.age">
+          {{error}}
+        </span>
+      </div>
+    </div>
+    <div class="text-center">
+      <button class="btn btn-danger" type="submit">Submit</button>
+    </div>
+  </form>
+  <br>
+</div>
