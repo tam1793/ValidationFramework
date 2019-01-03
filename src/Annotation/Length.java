@@ -5,8 +5,8 @@
  */
 package Annotation;
 
-import Annotation.NotNull.List;
-import Constraint.NotNullConstraint;
+import Annotation.Length.List;
+import Constraint.LengthConstraint;
 import static java.lang.annotation.ElementType.FIELD;
 import java.lang.annotation.Repeatable;
 import java.lang.annotation.Retention;
@@ -20,15 +20,17 @@ import java.lang.annotation.Target;
 @Target({FIELD})
 @Retention(RUNTIME)
 @Repeatable(List.class)
-@Constraint(validatedBy = {NotNullConstraint.class})
-public @interface NotNull {
+@Constraint(validatedBy = {LengthConstraint.class})
+public @interface Length {
 
-    String message() default " field is required.";
-
+    String message() default " field length is invalid.";
+    int min() default 0;
+    int max() default Integer.MAX_VALUE;
+    
     @Target({FIELD})
     @Retention(RUNTIME)
     @interface List {
 
-        NotNull[] value();
+        Length[] value();
     }
 }
