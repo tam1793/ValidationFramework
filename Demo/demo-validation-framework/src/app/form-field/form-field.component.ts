@@ -34,8 +34,5 @@ export class FormFieldComponent implements OnInit {
         }
       }
     })
-    alert('Error: ' + 'ahihi');
   }
-
-
 }

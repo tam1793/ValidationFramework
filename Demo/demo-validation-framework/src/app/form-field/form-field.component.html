@@ -14,6 +14,7 @@
       <div *ngIf="errors?.name.length > 0" class="alert alert-danger" role="alert">
         <span *ngFor="let error of errors?.name">
           {{error}}
+          <br>
         </span>
       </div>
     </div>
@@ -25,7 +26,8 @@
       <div *ngIf="errors?.age.length > 0" class="alert alert-danger" role="alert">
         <span *ngFor="let error of errors?.age">
           {{error}}
-        </span>
+          <br>
+        </span> 
       </div>
     </div>
     <div class="text-center">
