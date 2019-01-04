@@ -25,11 +25,8 @@ public class PatternConstraint implements ConstraintInterface<Pattern, String> {
     public boolean isValid(String value) {
         if (value == null){
             return false;
-        };
+        }
         
-        if (value == null){
-            return false;
-        };
         java.util.regex.Pattern myPattern;
 	Matcher matcher;
         myPattern = java.util.regex.Pattern.compile(pattern);

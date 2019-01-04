@@ -20,7 +20,7 @@ import java.lang.annotation.Target;
 @Target({FIELD})
 @Retention(RUNTIME)
 @Repeatable(List.class)
-@Constraint(validatedBy = {PatternConstraint.class})
+@Constraint(validatedBy = PatternConstraint.class)
 public @interface Pattern {
 
     String message() default " field value is invalid pattern format.";

@@ -5,8 +5,8 @@
  */
 package Annotation;
 
-import Annotation.Positive.List;
-import Constraint.PositiveConstraint;
+import Annotation.NonDigitString.List;
+import Constraint.NonDigitStringConstraint;
 import static java.lang.annotation.ElementType.FIELD;
 import java.lang.annotation.Repeatable;
 import java.lang.annotation.Retention;
@@ -20,15 +20,15 @@ import java.lang.annotation.Target;
 @Target({FIELD})
 @Retention(RUNTIME)
 @Repeatable(List.class)
-@Constraint(validatedBy = PositiveConstraint.class)
-public @interface Positive {
+@Constraint(validatedBy = NonDigitStringConstraint.class)
+public @interface NonDigitString {
 
-    String message() default " field must be positive.";
-
+    String message() default " field value must not have digit.";
+        
     @Target({FIELD})
     @Retention(RUNTIME)
     @interface List {
 
-        Positive[] value();
+        NonDigitString[] value();
     }
 }

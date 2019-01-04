@@ -28,7 +28,7 @@ public class EmailConstraint implements ConstraintInterface<Email, String> {
     public boolean isValid(String value) {
         if (value == null){
             return false;
-        };
+        }
         Pattern pattern;
 	Matcher matcher;
         pattern = Pattern.compile(EMAIL_PATTERN);
