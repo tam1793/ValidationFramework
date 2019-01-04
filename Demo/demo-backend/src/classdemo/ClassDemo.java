@@ -19,7 +19,7 @@ public class ClassDemo {
 
     public class User {
 
-        @NotNull(message = "test mess")
+        @NotNull()
         String name;
 
         @Min(message = "You are to young", value = 15)

@@ -72,6 +72,7 @@ public class Validator {
                                     hasMessage = true;
 
                                     String mess = (String) method.invoke(annotation);
+                                                                        
                                     errorMessage.add(mess);
                                 }
                             }

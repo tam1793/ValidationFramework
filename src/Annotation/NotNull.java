@@ -20,6 +20,6 @@ import java.lang.annotation.Target;
 @Constraint(validatedBy = NotNullConstraint.class)
 public @interface NotNull {
 
-    String message() default " field is required.";
+    String message() default "This field is required.";
 
 }

@@ -20,7 +20,7 @@ import java.lang.annotation.Target;
 @Constraint(validatedBy = MinConstraint.class)
 public @interface Min {
 
-    String message() default " field value is too small.";
+    String message() default "This field value is too small.";
 
     int value();
 

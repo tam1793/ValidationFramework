@@ -20,7 +20,7 @@ import java.lang.annotation.Target;
 @Constraint(validatedBy = LengthConstraint.class)
 public @interface Length {
 
-    String message() default " field length is invalid.";
+    String message() default "This field length is invalid.";
 
     int min() default 0;
 

@@ -20,6 +20,6 @@ import java.lang.annotation.Target;
 @Constraint(validatedBy = NullConstraint.class)
 public @interface Null {
 
-    String message() default " field must null.";
+    String message() default "This field must be null.";
 
 }

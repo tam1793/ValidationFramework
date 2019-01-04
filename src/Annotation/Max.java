@@ -20,7 +20,7 @@ import java.lang.annotation.Target;
 @Constraint(validatedBy = MaxConstraint.class)
 public @interface Max {
 
-    String message() default " field value is too big.";
+    String message() default "This field value is too big.";
 
     int value();
 

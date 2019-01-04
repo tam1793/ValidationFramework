@@ -5,7 +5,6 @@
  */
 package Annotation;
 
-import Annotation.Email.List;
 import Constraint.EmailConstraint;
 import static java.lang.annotation.ElementType.FIELD;
 import java.lang.annotation.Repeatable;
@@ -19,18 +18,10 @@ import java.lang.annotation.Target;
  */
 @Target({FIELD})
 @Retention(RUNTIME)
-@Repeatable(List.class)
-@Constraint(validatedBy = {EmailConstraint.class})
+@Constraint(validatedBy = EmailConstraint.class)
 public @interface Email {
 
-    String message() default " field value is invalid email format.";
+    String message() default "This field value is invalid email format.";
     
-    int value();
     
-    @Target({FIELD})
-    @Retention(RUNTIME)
-    @interface List {
-
-        Email[] value();
-    }
 }

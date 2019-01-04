@@ -5,7 +5,6 @@
  */
 package Annotation;
 
-import Annotation.Positive.List;
 import Constraint.PositiveConstraint;
 import static java.lang.annotation.ElementType.FIELD;
 import java.lang.annotation.Repeatable;
@@ -19,16 +18,9 @@ import java.lang.annotation.Target;
  */
 @Target({FIELD})
 @Retention(RUNTIME)
-@Repeatable(List.class)
-@Constraint(validatedBy = {PositiveConstraint.class})
+@Constraint(validatedBy = PositiveConstraint.class)
 public @interface Positive {
 
-    String message() default " field must be positive.";
+    String message() default "This field must be positive.";
 
-    @Target({FIELD})
-    @Retention(RUNTIME)
-    @interface List {
-
-        Positive[] value();
-    }
 }

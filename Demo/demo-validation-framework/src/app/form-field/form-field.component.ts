@@ -10,7 +10,8 @@ import { UserService } from '../service/user.service';
 export class FormFieldComponent implements OnInit {
 
   ngForm: FormGroup
-  errors = {name: [], age: []};
+  defaultObj = {name: [], age: []};
+  errors;
 
   constructor(private service: UserService) { }
 
@@ -19,7 +20,8 @@ export class FormFieldComponent implements OnInit {
     self.ngForm = new FormGroup({
       name: new FormControl('', null),
       age: new FormControl('', null)
-    })
+    });
+    self.errors = self.defaultObj;
   }
 
   submit(value) {
@@ -28,11 +30,12 @@ export class FormFieldComponent implements OnInit {
       if (!v.isValid) {
         if (!v.errorMessage.error) {
           self.errors = v.errorMessage;
-        }
-        else {
+        } else {
           alert('Error: ' + v.errorMessage.error);
         }
+      } else {
+        self.errors = self.defaultObj;
       }
-    })
+    });
   }
 }

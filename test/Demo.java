@@ -23,8 +23,7 @@ public class Demo {
      */
     public static class User {
 
-//        @NotNull(message = "test mess")
-        @Max(30)
+        @NotNull(message = "test mess")
         String name;
 
 //        @Null()
