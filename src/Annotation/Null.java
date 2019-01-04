@@ -5,7 +5,7 @@
  */
 package Annotation;
 
-import Constraint.LengthConstraint;
+import Constraint.NullConstraint;
 import static java.lang.annotation.ElementType.FIELD;
 import java.lang.annotation.Retention;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
@@ -17,12 +17,9 @@ import java.lang.annotation.Target;
  */
 @Target({FIELD})
 @Retention(RUNTIME)
-@Constraint(validatedBy = LengthConstraint.class)
-public @interface Length {
+@Constraint(validatedBy = NullConstraint.class)
+public @interface Null {
 
-    String message() default " field length is invalid.";
+    String message() default " field must null.";
 
-    int min() default 0;
-
-    int max() default Integer.MAX_VALUE;
 }

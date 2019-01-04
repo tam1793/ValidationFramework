@@ -5,10 +5,8 @@
  */
 package Annotation;
 
-import Annotation.Min.List;
 import Constraint.MinConstraint;
 import static java.lang.annotation.ElementType.FIELD;
-import java.lang.annotation.Repeatable;
 import java.lang.annotation.Retention;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import java.lang.annotation.Target;
@@ -19,18 +17,11 @@ import java.lang.annotation.Target;
  */
 @Target({FIELD})
 @Retention(RUNTIME)
-@Repeatable(List.class)
-@Constraint(validatedBy = {MinConstraint.class})
+@Constraint(validatedBy = MinConstraint.class)
 public @interface Min {
 
     String message() default " field value is too small.";
-    
-    int value();
-    
-    @Target({FIELD})
-    @Retention(RUNTIME)
-    @interface List {
 
-        Min[] value();
-    }
+    int value();
+
 }

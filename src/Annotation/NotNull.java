@@ -5,10 +5,8 @@
  */
 package Annotation;
 
-import Annotation.NotNull.List;
 import Constraint.NotNullConstraint;
 import static java.lang.annotation.ElementType.FIELD;
-import java.lang.annotation.Repeatable;
 import java.lang.annotation.Retention;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import java.lang.annotation.Target;
@@ -19,16 +17,9 @@ import java.lang.annotation.Target;
  */
 @Target({FIELD})
 @Retention(RUNTIME)
-@Repeatable(List.class)
-@Constraint(validatedBy = {NotNullConstraint.class})
+@Constraint(validatedBy = NotNullConstraint.class)
 public @interface NotNull {
 
     String message() default " field is required.";
 
-    @Target({FIELD})
-    @Retention(RUNTIME)
-    @interface List {
-
-        NotNull[] value();
-    }
 }

@@ -6,7 +6,6 @@
 package Constraint;
 
 import Annotation.Length;
-import com.sun.istack.internal.NotNull;
 
 /**
  *

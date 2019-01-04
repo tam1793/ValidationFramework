@@ -6,7 +6,6 @@
 package Constraint;
 
 import Annotation.Max;
-import com.sun.istack.internal.NotNull;
 
 /**
  *

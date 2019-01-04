@@ -19,5 +19,5 @@ import java.lang.annotation.Target;
 @Retention(RUNTIME)
 public @interface Constraint {
 
-    Class<? extends ConstraintInterface<?, ?>>[] validatedBy();
+    Class<? extends ConstraintInterface<?, ?>> validatedBy();
 }

@@ -5,22 +5,22 @@
  */
 package Constraint;
 
-import Annotation.NotNull;
+import Annotation.Null;
 
 
 /**
  *
  * @author tamnnq
  */
-public class NotNullConstraint implements ConstraintInterface<NotNull, Object> {
+public class NullConstraint implements ConstraintInterface<Null, Object> {
 
     @Override
-    public void initialize(NotNull annotation) {
+    public void initialize(Null annotation) {
     }
 
     @Override
     public boolean isValid(Object value) {
-        return value != null;
+        return value == null;
     }
 
 }

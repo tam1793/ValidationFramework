@@ -5,10 +5,8 @@
  */
 package Annotation;
 
-import Annotation.Max.List;
 import Constraint.MaxConstraint;
 import static java.lang.annotation.ElementType.FIELD;
-import java.lang.annotation.Repeatable;
 import java.lang.annotation.Retention;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import java.lang.annotation.Target;
@@ -19,18 +17,11 @@ import java.lang.annotation.Target;
  */
 @Target({FIELD})
 @Retention(RUNTIME)
-@Repeatable(List.class)
-@Constraint(validatedBy = {MaxConstraint.class})
+@Constraint(validatedBy = MaxConstraint.class)
 public @interface Max {
 
     String message() default " field value is too big.";
-    
-    int value();
-    
-    @Target({FIELD})
-    @Retention(RUNTIME)
-    @interface List {
 
-        Max[] value();
-    }
+    int value();
+
 }
