@@ -30,7 +30,7 @@ public class Demo {
 //        @Email(message = "Demo fail")
         Integer age;
 
-        @MinInteger(message = "Test field in field", value = 2, target = "this.age")
+        @MinInteger(message = "Test field in field", value = 2, target = "this.age.asd")
         public User user;
 
         public void setName(String name) {
