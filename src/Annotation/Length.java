@@ -5,7 +5,7 @@
  */
 package Annotation;
 
-import Constraint.LengthConstraint;
+import Validation.LengthValidation;
 import static java.lang.annotation.ElementType.FIELD;
 import java.lang.annotation.Retention;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
@@ -17,8 +17,10 @@ import java.lang.annotation.Target;
  */
 @Target({FIELD})
 @Retention(RUNTIME)
-@Constraint(validatedBy = LengthConstraint.class)
+@Constraint(validatedBy = LengthValidation.class)
 public @interface Length {
+
+    String target() default "this";
 
     String message() default "This field length is invalid.";
 

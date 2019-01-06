@@ -5,7 +5,8 @@
  */
 package Annotation;
 
-import Validation.PositiveValidation;
+import Validation.EmailValidation;
+import java.lang.annotation.Annotation;
 import static java.lang.annotation.ElementType.FIELD;
 import java.lang.annotation.Retention;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
@@ -17,11 +18,8 @@ import java.lang.annotation.Target;
  */
 @Target({FIELD})
 @Retention(RUNTIME)
-@Constraint(validatedBy = PositiveValidation.class)
-public @interface Positive {
+@Constraint(validatedBy = EmailValidation.class)
+public @interface CompositeValidation {
 
-    String target() default "this";
-
-    String message() default "This field must be positive.";
-
+    Class<? extends Annotation>[] listValidation();
 }

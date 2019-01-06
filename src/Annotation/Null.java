@@ -5,7 +5,7 @@
  */
 package Annotation;
 
-import Constraint.NullConstraint;
+import Validation.NullValidation;
 import static java.lang.annotation.ElementType.FIELD;
 import java.lang.annotation.Retention;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
@@ -17,8 +17,10 @@ import java.lang.annotation.Target;
  */
 @Target({FIELD})
 @Retention(RUNTIME)
-@Constraint(validatedBy = NullConstraint.class)
+@Constraint(validatedBy = NullValidation.class)
 public @interface Null {
+
+    String target() default "this";
 
     String message() default "This field must be null.";
 

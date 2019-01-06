@@ -5,9 +5,8 @@
  */
 package Annotation;
 
-import Constraint.NonDigitStringConstraint;
+import Validation.NonDigitStringValidation;
 import static java.lang.annotation.ElementType.FIELD;
-import java.lang.annotation.Repeatable;
 import java.lang.annotation.Retention;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import java.lang.annotation.Target;
@@ -18,8 +17,10 @@ import java.lang.annotation.Target;
  */
 @Target({FIELD})
 @Retention(RUNTIME)
-@Constraint(validatedBy = NonDigitStringConstraint.class)
+@Constraint(validatedBy = NonDigitStringValidation.class)
 public @interface NonDigitString {
+
+    String target() default "this";
 
     String message() default "This field value must not have digit.";
 }

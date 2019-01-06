@@ -5,7 +5,7 @@
  */
 package ValidationContext;
 
-import Constraint.ConstraintInterface;
+import Validation.AbstractValidation;
 import java.lang.annotation.Annotation;
 
 /**
@@ -14,20 +14,20 @@ import java.lang.annotation.Annotation;
  */
 public class ValidationContext {
 
-    Class<? extends ConstraintInterface<?, ?>> constraint;
+    Class<? extends AbstractValidation<?, ?>> validator;
     Annotation annotation;
 
-    public ValidationContext(Class<? extends ConstraintInterface<?, ?>> constraint, Annotation annotation) {
-        this.constraint = constraint;
+    public ValidationContext(Class<? extends AbstractValidation<?, ?>> validator, Annotation annotation) {
+        this.validator = validator;
         this.annotation = annotation;
     }
 
-    public Class<? extends ConstraintInterface<?, ?>> getConstraint() {
-        return constraint;
+    public Class<? extends AbstractValidation<?, ?>> getValidator() {
+        return validator;
     }
 
     public Annotation getAnnotation() {
         return annotation;
     }
-
+    
 }

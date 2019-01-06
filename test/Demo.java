@@ -1,10 +1,11 @@
 
+import Annotation.Email;
 import Annotation.Max;
 import Annotation.Min;
 import Annotation.NotNull;
 import Annotation.Null;
 import ValidationResult.ValidationResult;
-import Validator.Validator;
+import Execute.Validator;
 import java.util.HashMap;
 
 /*
@@ -23,12 +24,13 @@ public class Demo {
      */
     public static class User {
 
-        @NotNull(message = "test mess")
+        @NotNull(message = "test mess not null")
         String name;
 
-//        @Null()
+        @Null()
         @Min(message = "You are to young", value = 15)
         @Max(30)
+        @Email(message = "Demo fail")
         Integer age;
 
         public void setName(String name) {
@@ -46,16 +48,17 @@ public class Demo {
 
     }
 
-    
-    public static void testAnno(){
-        System.out.println("Demo.testAnno()");
+    @interface DemoCustom {
+
     }
-    
+
     public static void main(String[] args) {
         User user = new User("asd", 33);
         ValidationResult result = Validator.getInstance().validate(user);
-//        HashMap map = result.getErrorMessage();
-//        System.err.println(map.toString());
+        if (result != null) {
+            HashMap map = result.getErrorMessage();
+            System.err.println(map.toString());
+        }
     }
 
 }

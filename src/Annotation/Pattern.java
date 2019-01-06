@@ -5,9 +5,8 @@
  */
 package Annotation;
 
-import Constraint.PatternConstraint;
+import Validation.PatternValidation;
 import static java.lang.annotation.ElementType.FIELD;
-import java.lang.annotation.Repeatable;
 import java.lang.annotation.Retention;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import java.lang.annotation.Target;
@@ -18,11 +17,13 @@ import java.lang.annotation.Target;
  */
 @Target({FIELD})
 @Retention(RUNTIME)
-@Constraint(validatedBy = PatternConstraint.class)
+@Constraint(validatedBy = PatternValidation.class)
 public @interface Pattern {
 
+    String target() default "this";
+
     String message() default "This field value is invalid pattern format.";
-    
+
     String value();
-    
+
 }

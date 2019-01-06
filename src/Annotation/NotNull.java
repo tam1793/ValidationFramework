@@ -5,7 +5,7 @@
  */
 package Annotation;
 
-import Constraint.NotNullConstraint;
+import Validation.NotNullValidation;
 import static java.lang.annotation.ElementType.FIELD;
 import java.lang.annotation.Retention;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
@@ -17,8 +17,10 @@ import java.lang.annotation.Target;
  */
 @Target({FIELD})
 @Retention(RUNTIME)
-@Constraint(validatedBy = NotNullConstraint.class)
+@Constraint(validatedBy = NotNullValidation.class)
 public @interface NotNull {
+
+    String target() default "this";
 
     String message() default "This field is required.";
 
