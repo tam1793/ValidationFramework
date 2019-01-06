@@ -5,28 +5,28 @@
  */
 package Validation;
 
-import Annotation.Min;
+import Annotation.MinInteger;
 
 /**
  *
  * @author tamnnq
  */
-public class MinValidation extends AbstractValidation<Min> {
+public class MinIntegerValidation extends AbstractValidation<MinInteger> {
 
     private int min;
 
     @Override
-    protected void init(Min annotation) {
+    protected void init(MinInteger annotation) {
         min = annotation.value();
     }
 
     @Override
-    protected String getMessage(Min annotation) {
+    protected String getMessage(MinInteger annotation) {
         return annotation.message();
     }
 
     @Override
-    protected String getTarget(Min annotation) {
+    protected String getTarget(MinInteger annotation) {
         return annotation.target();
     }
 

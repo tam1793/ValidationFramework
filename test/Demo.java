@@ -1,12 +1,12 @@
 
 import Annotation.Email;
-import Annotation.Max;
-import Annotation.Min;
 import Annotation.NotNull;
 import Annotation.Null;
 import ValidationResult.ValidationResult;
 import Execute.Validator;
 import java.util.HashMap;
+import Annotation.MinInteger;
+import Annotation.MaxInteger;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -28,8 +28,8 @@ public class Demo {
         String name;
 
         @Null()
-        @Min(message = "You are to young", value = 15)
-        @Max(30)
+        @MinInteger(message = "You are to young", value = 15)
+        @MaxInteger(30)
         @Email(message = "Demo fail")
         Integer age;
 

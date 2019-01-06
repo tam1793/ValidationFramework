@@ -5,18 +5,18 @@
  */
 package Constraint;
 
-import Annotation.Min;
+import Annotation.MinInteger;
 
 /**
  *
  * @author tamnnq
  */
-public class MinConstraint implements ConstraintInterface<Min, Integer> {
+public class MinConstraint implements ConstraintInterface<MinInteger, Integer> {
 
     private int min;
     
     @Override
-    public void initialize(Min annotation) {
+    public void initialize(MinInteger annotation) {
         min = annotation.value();
     }
 

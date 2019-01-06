@@ -5,7 +5,7 @@
  */
 package Annotation;
 
-import Validation.MaxValidation;
+import Validation.MinValidation;
 import static java.lang.annotation.ElementType.FIELD;
 import java.lang.annotation.Retention;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
@@ -17,12 +17,12 @@ import java.lang.annotation.Target;
  */
 @Target({FIELD})
 @Retention(RUNTIME)
-@Constraint(validatedBy = MaxValidation.class)
-public @interface Max {
+@Constraint(validatedBy = MinValidation.class)
+public @interface MinInteger {
 
     String target() default "this";
 
-    String message() default "This field value is too big.";
+    String message() default "This field value is too small.";
 
     int value();
 

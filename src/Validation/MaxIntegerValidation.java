@@ -5,28 +5,28 @@
  */
 package Validation;
 
-import Annotation.Max;
+import Annotation.MaxInteger;
 
 /**
  *
  * @author tamnnq
  */
-public class MaxValidation extends AbstractValidation<Max> {
+public class MaxIntegerValidation extends AbstractValidation<MaxInteger> {
 
     private int max;
 
     @Override
-    protected void init(Max annotation) {
+    protected void init(MaxInteger annotation) {
         max = annotation.value();
     }
 
     @Override
-    protected String getMessage(Max annotation) {
+    protected String getMessage(MaxInteger annotation) {
         return annotation.message();
     }
 
     @Override
-    protected String getTarget(Max annotation) {
+    protected String getTarget(MaxInteger annotation) {
         return annotation.target();
     }
 
