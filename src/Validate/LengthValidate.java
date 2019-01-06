@@ -40,5 +40,5 @@ public class LengthValidate extends AbstractValidate<Length> {
         this.min = annotation.min();
         this.max = annotation.max();
     }
-
+    
 }

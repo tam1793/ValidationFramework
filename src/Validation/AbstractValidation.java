@@ -17,20 +17,21 @@ public abstract class AbstractValidation<T extends Annotation, K extends Abstrac
 
     abstract public void init(T annotation);
 
-    abstract protected String getMessage();
+    abstract public String getMessage();
 
     abstract protected String getTarget();
 
-    abstract protected Class<K> getValidate();
+    abstract protected Class<K> getValidate(T annotation);
 
     public boolean execute(T annotation, Object obj, Field field) {
         try {
-            Class validateClass = getValidate();
-            AbstractValidate validate = (AbstractValidate) validateClass.newInstance();
+            init(annotation);
+            Class<K> validateClass = getValidate(annotation);
+            K validate = (K) validateClass.newInstance();
             validate.init(annotation);
             return validate.validate(obj, field, getTarget());
         } catch (Exception ex) {
-            System.err.println(ex.getMessage());
+            System.err.println("ERROR: "+ex.getMessage());
         }
         return false;
 

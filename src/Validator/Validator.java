@@ -3,13 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Execute;
+package Validator;
 
-import Annotation.Constraint;
 import Validation.ValidationFactory;
 import Validation.AbstractValidation;
-import ValidationContext.MetaData;
-import ValidationContext.ValidationContext;
 import ValidationResult.ValidationResult;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -41,45 +38,40 @@ public class Validator {
         }
         return instance;
     }
-    
-    
+
     public ValidationResult validate(Object obj) {
         try {
             ValidationResult result = new ValidationResult();
-            Boolean hasMessage;
 
-            ArrayList<MetaData> metaList = buildListMetaData(obj);
-            if (metaList != null) {
+            if (obj != null) {
+                Field[] fields = obj.getClass().getDeclaredFields();
 
-                for (MetaData data : metaList) {
+                for (Field field : fields) {
                     ArrayList<String> errorMessage = new ArrayList<String>();
+                    Annotation[] annotations = field.getAnnotations();
 
-                    // Validation context of each field
-                    ArrayList<ValidationContext> contextList = data.getConstraints();
-                    for (ValidationContext context : contextList) {
-
-                        AbstractValidation validator = context.getValidator().newInstance();
-                        Annotation annotation = context.getAnnotation();
-                        String mess = validator.validate(annotation, obj);
-                        if (mess != null) {
-                            errorMessage.add(mess);
+                    for (Annotation annotation : annotations) {
+                        AbstractValidation validation = ValidationFactory.buildValidation(annotation);
+                        boolean isValid = validation.execute(annotation, obj, field);
+                        if (!isValid) {
+                            errorMessage.add(validation.getMessage());
                         }
                     }
                     if (!errorMessage.isEmpty()) {
-                        result.add(data.getFieldName(), errorMessage);
+                        result.add(field.getName(), errorMessage);
                     }
                 }
+
             } else {
-                result.add("error", new ArrayList<String>(Arrays.asList("Somethings went wrong.")));
+                result.add("error", new ArrayList<String>(Arrays.asList("Cannot validate null object")));
             }
             return result;
-
         } catch (Exception ex) {
             System.err.println(ex.getMessage());
         }
         return null;
     }
-    
+
 //
 //    public ValidationResult validate(Object obj) {
 //        try {
@@ -117,39 +109,37 @@ public class Validator {
 //        }
 //        return null;
 //    }
-
-    private static ArrayList<MetaData> buildListMetaData(Object obj) {
-        try {
-            ArrayList<MetaData> metaList = new ArrayList<MetaData>();
-            if (obj != null) {
-                
-                
-                Field[] fields = obj.getClass().getDeclaredFields();
-                for (Field field : fields) {
-                    //annotation of field
-                    field.setAccessible(true);
-                    Annotation[] annoList = field.getDeclaredAnnotations();
-                    ArrayList<ValidationContext> contextList = new ArrayList<ValidationContext>();
-
-                    for (Annotation annotation : annoList) {
-                        //check valdate annotation
-                        Annotation anno = annotation.annotationType().getAnnotation(Constraint.class);
-                        if (anno instanceof Constraint) {
-                            contextList.add(new ValidationContext(((Constraint) anno).validatedBy(), annotation));
-                        }
-                    }
-                    field.getName();
-                    field.get(obj);
-                    MetaData meta = new MetaData(field.getName(), field.get(obj), contextList);
-                    metaList.add(meta);
-                }
-                return metaList;
-            }
-
-        } catch (Exception ex) {
-            System.err.println(ex.getMessage());
-        }
-        return null;
-    }
-
+//    private static ArrayList<MetaData> buildListMetaData(Object obj) {
+//        try {
+//            ArrayList<MetaData> metaList = new ArrayList<MetaData>();
+//            if (obj != null) {
+//                
+//                
+//                Field[] fields = obj.getClass().getDeclaredFields();
+//                for (Field field : fields) {
+//                    //annotation of field
+//                    field.setAccessible(true);
+//                    Annotation[] annoList = field.getDeclaredAnnotations();
+//                    ArrayList<ValidationContext> contextList = new ArrayList<ValidationContext>();
+//
+//                    for (Annotation annotation : annoList) {
+//                        //check valdate annotation
+//                        Annotation anno = annotation.annotationType().getAnnotation(Constraint.class);
+//                        if (anno instanceof Constraint) {
+//                            contextList.add(new ValidationContext(((Constraint) anno).validatedBy(), annotation));
+//                        }
+//                    }
+//                    field.getName();
+//                    field.get(obj);
+//                    MetaData meta = new MetaData(field.getName(), field.get(obj), contextList);
+//                    metaList.add(meta);
+//                }
+//                return metaList;
+//            }
+//
+//        } catch (Exception ex) {
+//            System.err.println(ex.getMessage());
+//        }
+//        return null;
+//    }
 }

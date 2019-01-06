@@ -6,8 +6,6 @@
 package Validate;
 
 import Annotation.MinInteger;
-import java.util.Collection;
-import java.util.Map;
 
 /**
  *

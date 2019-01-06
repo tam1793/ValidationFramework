@@ -6,8 +6,6 @@
 package Validate;
 
 import Annotation.MaxInteger;
-import java.util.Collection;
-import java.util.Map;
 
 /**
  *

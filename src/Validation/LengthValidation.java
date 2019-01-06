@@ -6,45 +6,39 @@
 package Validation;
 
 import Annotation.Length;
+import Utils.AnnotationUtils;
 import Validate.AbstractValidate;
+import Validate.EmailValidate;
 import Validate.LengthValidate;
 
 /**
  *
  * @author tamnnq
  */
-public class LengthValidation extends AbstractValidation<Length,LengthValidate> {
+public class LengthValidation extends AbstractValidation<Length, LengthValidate> {
 
-    private int min;
-    private int max;
+    String message;
+    String target;
 
     @Override
-    protected AbstractValidate init(Length annotation) {
-        min = annotation.min();
-        max = annotation.max();
-        
-        return null;
+    public String getMessage() {
+        return this.message;
     }
 
     @Override
-    protected String getMessage(Length annotation) {
-        return annotation.message();
+    protected String getTarget() {
+        return target;
     }
 
     @Override
-    protected String getTarget(Length annotation) {
-        return annotation.target();
+    public void init(Length annotation) {
+        this.message = annotation.message();
+        this.target = annotation.target();
     }
 
     @Override
-    protected Class<? extends AbstractValidate> getValidate(Length annotation) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    protected AbstractValidate init(Length annotation, AbstractValidate validate) {
-        
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    protected Class<LengthValidate> getValidate(Length annotation) {
+        return (Class<LengthValidate>) AnnotationUtils.getValidateOfAnnotation(annotation);
     }
 
 }

@@ -22,9 +22,16 @@ public class FieldUtils {
             Class<?> targetClass = obj.getClass();
             for (String fieldName : fieldsNames) {
                 Field field = getFieldByName(targetClass, fieldName);
+                if (field == null) {
+                    return null;
+                }
                 targetClass = field.getType();
                 obj = getFieldValue(obj, field);
+                if (obj == null) {
+                    return null;
+                }
             }
+            return obj;
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
@@ -36,8 +43,14 @@ public class FieldUtils {
         return targetClass.getDeclaredField(fieldName);
     }
 
-    private static Object getFieldValue(Object obj, Field field) throws Exception {
-        field.setAccessible(true);
-        return field.get(obj);
+    private static Object getFieldValue(Object obj, Field field) {
+        try {
+
+            field.setAccessible(true);
+            return field.get(obj);
+        } catch (Exception ex) {
+            System.err.println(ex.getMessage());
+        }
+        return null;
     }
 }

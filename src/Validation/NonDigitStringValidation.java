@@ -6,25 +6,37 @@
 package Validation;
 
 import Annotation.NonDigitString;
+import Utils.AnnotationUtils;
 import Validate.NonDigitStringValidate;
 
 /**
  *
  * @author tamnnq
  */
-public class NonDigitStringValidation extends AbstractValidation<NonDigitString,NonDigitStringValidate> {
+public class NonDigitStringValidation extends AbstractValidation<NonDigitString, NonDigitStringValidate> {
+
+    private String message;
+    private String target;
 
     @Override
-    protected void init(NonDigitString annotation) {
+    public String getMessage() {
+        return this.message;
     }
 
     @Override
-    protected String getMessage(NonDigitString annotation) {
-        return annotation.message();
+    protected String getTarget() {
+        return this.target;
     }
 
     @Override
-    protected String getTarget(NonDigitString annotation) {
-        return annotation.target();
+    public void init(NonDigitString annotation) {
+        this.message = annotation.message();
+        this.target = annotation.target();
+    }
+
+    @Override
+    protected Class<NonDigitStringValidate> getValidate(NonDigitString annotation) {
+        return (Class<NonDigitStringValidate>) AnnotationUtils.getValidateOfAnnotation(annotation);
+
     }
 }

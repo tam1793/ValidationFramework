@@ -13,16 +13,17 @@ import java.lang.reflect.Field;
  *
  * @author tamnnq
  */
-public abstract class AbstractValidate<T extends Annotation>{
+public abstract class AbstractValidate<T extends Annotation> {
 
     public boolean validate(Object object, Field field, String target) {
         try {
+            field.setAccessible(true);
+
             if (target.equals("this")) {
                 Object result = field.get(object);
                 return validate(result);
             } else {
-                //Find value from path target
-                Object result = FieldUtils.getField(target.substring(2), field.get(object));
+                Object result = FieldUtils.getField(target.substring(5), field.get(object));
                 return validate(result);
             }
         } catch (Exception e) {
@@ -32,5 +33,6 @@ public abstract class AbstractValidate<T extends Annotation>{
     }
 
     public abstract void init(T annotation);
+
     protected abstract boolean validate(Object value);
 }

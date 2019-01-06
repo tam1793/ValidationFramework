@@ -1,9 +1,8 @@
 
 import Annotation.Email;
 import Annotation.NotNull;
-import Annotation.Null;
 import ValidationResult.ValidationResult;
-import Execute.Validator;
+import Validator.Validator;
 import java.util.HashMap;
 import Annotation.MinInteger;
 import Annotation.MaxInteger;
@@ -24,14 +23,15 @@ public class Demo {
      */
     public static class User {
 
-        @NotNull(message = "test mess not null")
+//        @NotNull(message = "test mess not null")
         String name;
 
-        @Null()
-        @MinInteger(message = "You are to young", value = 15)
-        @MaxInteger(30)
-        @Email(message = "Demo fail")
+//        @MinInteger(message = "You are to young", value = 15)
+//        @Email(message = "Demo fail")
         Integer age;
+
+        @MinInteger(message = "Test field in field", value = 2, target = "this.age")
+        public User user;
 
         public void setName(String name) {
             this.name = name;
@@ -54,6 +54,7 @@ public class Demo {
 
     public static void main(String[] args) {
         User user = new User("asd", 33);
+        user.user = new User("test", 0);
         ValidationResult result = Validator.getInstance().validate(user);
         if (result != null) {
             HashMap map = result.getErrorMessage();

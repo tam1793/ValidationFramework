@@ -6,28 +6,38 @@
 package Validation;
 
 import Annotation.MinInteger;
+import Utils.AnnotationUtils;
+import Validate.MinIntegerValidate;
 
 /**
  *
  * @author tamnnq
  */
-public class MinIntegerValidation extends AbstractValidation<MinInteger,MinIntegerValidation> {
+public class MinIntegerValidation extends AbstractValidation<MinInteger, MinIntegerValidate> {
 
-    private int min;
+    private String message;
+    private String target;
 
     @Override
-    protected void init(MinInteger annotation) {
-        min = annotation.value();
+    public String getMessage() {
+        return this.message;
     }
 
     @Override
-    protected String getMessage(MinInteger annotation) {
-        return annotation.message();
+    protected String getTarget() {
+        return this.target;
     }
 
     @Override
-    protected String getTarget(MinInteger annotation) {
-        return annotation.target();
+    public void init(MinInteger annotation) {
+        this.message = annotation.message();
+        this.target = annotation.target();
+    }
+
+    @Override
+    protected Class<MinIntegerValidate> getValidate(MinInteger annotation) {
+        return (Class<MinIntegerValidate>) AnnotationUtils.getValidateOfAnnotation(annotation);
+
     }
 
 }

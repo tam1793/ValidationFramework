@@ -32,7 +32,6 @@ public class NonDigitStringValidate extends AbstractValidate<NonDigitString> {
 
     @Override
     public void init(NonDigitString annotation) {
-        
     }
 
 }

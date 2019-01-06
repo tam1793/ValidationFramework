@@ -38,7 +38,6 @@ public class ValidationFactory {
             String annotationClass = annotation.annotationType().getName();
             Class validationClass = executeContent.get(annotationClass);
             if (validationClass == null) {
-                System.err.println("Can not get Validation of Annotation " + annotationClass);
                 return null;
             }
             return (AbstractValidation) validationClass.newInstance();

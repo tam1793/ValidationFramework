@@ -6,26 +6,37 @@
 package Validation;
 
 import Annotation.Positive;
+import Utils.AnnotationUtils;
 import Validate.PositiveValidate;
 
 /**
  *
  * @author tamnnq
  */
-public class PositiveValidation extends AbstractValidation<Positive,PositiveValidate> {
+public class PositiveValidation extends AbstractValidation<Positive, PositiveValidate> {
+
+    private String message;
+    private String target;
 
     @Override
-    protected void init(Positive annotation) {
+    public String getMessage() {
+        return this.message;
     }
 
     @Override
-    protected String getMessage(Positive annotation) {
-        return annotation.message();
+    protected String getTarget() {
+        return this.target;
     }
 
     @Override
-    protected String getTarget(Positive annotation) {
-        return annotation.target();
+    public void init(Positive annotation) {
+        this.message = annotation.message();
+        this.target = annotation.target();
+    }
+
+    @Override
+    protected Class<PositiveValidate> getValidate(Positive annotation) {
+        return (Class<PositiveValidate>) AnnotationUtils.getValidateOfAnnotation(annotation);
     }
 
 }
