@@ -5,6 +5,8 @@
  */
 package Validate;
 
+import Annotation.Length;
+import java.lang.annotation.Annotation;
 import java.util.Collection;
 import java.util.Map;
 
@@ -12,7 +14,7 @@ import java.util.Map;
  *
  * @author tamnnq
  */
-public class LengthValidate extends AbstractValidate {
+public class LengthValidate extends AbstractValidate<Length> {
 
     private int min;
     private int max;
@@ -40,6 +42,12 @@ public class LengthValidate extends AbstractValidate {
     
     public void setMinLength(int minLength) {
         this.min = minLength;
+    }
+
+    @Override
+    public void init(Length annotation) {
+        this.min = annotation.min();
+        this.max = annotation.max();
     }
     
 }

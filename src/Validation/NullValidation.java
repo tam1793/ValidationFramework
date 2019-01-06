@@ -11,20 +11,29 @@ import Annotation.Null;
  *
  * @author tamnnq
  */
-public class NullValidation extends AbstractValidation<Null> {
+public class NullValidation extends AbstractValidation<Null,NullValidate> {
+
+    private String message;
+    private String target;
 
     @Override
-    protected void init(Null annotation) {
+    protected String getMessage() {
+        return this.message;
     }
 
     @Override
-    protected String getMessage(Null annotation) {
-        return annotation.message();
+    protected String getTarget() {
+        return this.target;
     }
 
     @Override
-    protected String getTarget(Null annotation) {
-        return annotation.target();
+    public void init(NotNull annotation) {
+        this.message = annotation.message();
+        this.target = annotation.target();
     }
 
+    @Override
+    protected Class<NullValidate> getValidate() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -6,34 +6,36 @@
 package Validation;
 
 import Annotation.MaxInteger;
+import Validate.MaxIntegerValidate;
 
 /**
  *
  * @author tamnnq
  */
-public class MaxIntegerValidation extends AbstractValidation<MaxInteger> {
+public class MaxIntegerValidation extends AbstractValidation<MaxInteger,MaxIntegerValidate> {
 
-    private int max;
+    private String message;
+    private String target;
 
     @Override
-    protected void init(MaxInteger annotation) {
-        max = annotation.value();
-        return null;
+    protected String getMessage() {
+        return this.message;
     }
 
     @Override
-    protected String getMessage(MaxInteger annotation) {
-        return annotation.message();
+    protected String getTarget() {
+        return this.target;
     }
 
     @Override
-    protected String getTarget(MaxInteger annotation) {
-        return annotation.target();
-    }
-
-    @Override
-    protected Class<? extends AbstractValidate> getValidate(Max annotation) {
+    protected Class<? extends AbstractValidate> getValidate() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void init(MaxInteger annotation) {
+        this.message = annotation.message();
+        this.target = annotation.target();
     }
 
 }

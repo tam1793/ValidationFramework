@@ -6,24 +6,35 @@
 package Validation;
 
 import Annotation.NonDigitString;
+import Validate.NonDigitStringValidate;
 
 /**
  *
  * @author tamnnq
  */
-public class NonDigitStringValidation extends AbstractValidation<NonDigitString> {
+public class NonDigitStringValidation extends AbstractValidation<NonDigitString,NonDigitStringValidate> {
+
+    private String message;
+    private String target;
 
     @Override
-    protected void init(NonDigitString annotation) {
+    protected String getMessage() {
+        return this.message;
     }
 
     @Override
-    protected String getMessage(NonDigitString annotation) {
-        return annotation.message();
+    protected String getTarget() {
+        return this.target;
     }
 
     @Override
-    protected String getTarget(NonDigitString annotation) {
-        return annotation.target();
+    public void init(NonDigitString annotation) {
+        this.message = annotation.message();
+        this.target = annotation.target();
+    }
+
+    @Override
+    protected Class<NonDigitStringValidate> getValidate() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

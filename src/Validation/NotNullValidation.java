@@ -6,25 +6,37 @@
 package Validation;
 
 import Annotation.NotNull;
+import Validate.NotNullValidate;
 
 /**
  *
  * @author tamnnq
  */
-public class NotNullValidation extends AbstractValidation<NotNull> {
+public class NotNullValidation extends AbstractValidation<NotNull,NotNullValidate> {
+
+    private String message;
+    private String target;
 
     @Override
-    protected void init(NotNull annotation) {
+    protected String getMessage() {
+        return this.message;
     }
 
     @Override
-    protected String getMessage(NotNull annotation) {
-        return annotation.message();
+    protected String getTarget() {
+        return this.target;
     }
 
     @Override
-    protected String getTarget(NotNull annotation) {
-        return annotation.target();
+    public void init(NotNull annotation) {
+        this.message = annotation.message();
+        this.target = annotation.target();
     }
+
+    @Override
+    protected Class<NotNullValidate> getValidate() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 
 }

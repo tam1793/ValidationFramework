@@ -5,11 +5,13 @@
  */
 package Validate;
 
+import Annotation.NonDigitString;
+
 /**
  *
  * @author tamnnq
  */
-public class NonDigitStringValidate extends AbstractValidate {
+public class NonDigitStringValidate extends AbstractValidate<NonDigitString> {
 
     @Override
     protected boolean validate(Object value) {
@@ -26,6 +28,10 @@ public class NonDigitStringValidate extends AbstractValidate {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public void init(NonDigitString annotation) {
     }
 
 }

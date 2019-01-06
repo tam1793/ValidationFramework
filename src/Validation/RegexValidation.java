@@ -6,33 +6,36 @@
 package Validation;
 
 import Annotation.Regex;
+import Validate.RegexValidate;
 import java.util.regex.Matcher;
 
 /**
  *
  * @author tamnnq
  */
-public class RegexValidation extends AbstractValidation<Regex> {
+public class RegexValidation extends AbstractValidation<Regex,RegexValidate> {
 
-    private String pattern;
+    private String message;
+    private String target;
 
     @Override
-    protected void init(Regex annotation) {
-        pattern = annotation.value();
+    protected String getMessage() {
+        return this.message;
     }
 
     @Override
-    protected String getMessage(Regex annotation) {
-        return annotation.message();
+    protected String getTarget() {
+        return this.target;
     }
 
     @Override
-    protected String getTarget(Regex annotation) {
-        return annotation.target();
+    public void init(Regex annotation) {
+        this.message = annotation.message();
+        this.target = annotation.target();
     }
 
     @Override
-    protected Class<? extends AbstractValidate> getValidate(Pattern annotation) {
+    protected Class<NotNullValidate> getValidate() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

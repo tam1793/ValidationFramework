@@ -6,25 +6,36 @@
 package Validation;
 
 import Annotation.Positive;
+import Validate.PositiveValidate;
 
 /**
  *
  * @author tamnnq
  */
-public class PositiveValidation extends AbstractValidation<Positive> {
+public class PositiveValidation extends AbstractValidation<Positive,PositiveValidate> {
+
+    private String message;
+    private String target;
 
     @Override
-    protected void init(Positive annotation) {
+    protected String getMessage() {
+        return this.message;
     }
 
     @Override
-    protected String getMessage(Positive annotation) {
-        return annotation.message();
+    protected String getTarget() {
+        return this.target;
     }
 
     @Override
-    protected String getTarget(Positive annotation) {
-        return annotation.target();
+    protected Class<NotNullValidate> getValidate() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void init(Positive annotation) {
+        this.message = annotation.message();
+        this.target = annotation.target();    
     }
 
 }

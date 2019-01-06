@@ -5,6 +5,7 @@
  */
 package Validate;
 
+import Annotation.NotEmpty;
 import java.util.Collection;
 import java.util.Map;
 
@@ -12,7 +13,7 @@ import java.util.Map;
  *
  * @author tamnnq
  */
-public class EmptyValidate extends AbstractValidate {
+public class NotEmptyValidate extends AbstractValidate<NotEmpty> {
 
     @Override
     protected boolean validate(Object value) {
@@ -24,5 +25,9 @@ public class EmptyValidate extends AbstractValidate {
             return ((Map) value).size() != 0;
         }
         return false ;
+    }
+
+    @Override
+    public void init(NotEmpty annotation) {
     }
 }

@@ -5,14 +5,13 @@
  */
 package Validate;
 
-import java.util.Collection;
-import java.util.Map;
+import Annotation.Positive;
 
 /**
  *
  * @author tamnnq
  */
-public class PositiveValidate extends AbstractValidate {
+public class PositiveValidate extends AbstractValidate<Positive> {
 
     @Override
     protected boolean validate(Object value) {
@@ -23,5 +22,10 @@ public class PositiveValidate extends AbstractValidate {
             return (Integer)value > 0;
         }
         return false;
+    }
+
+    @Override
+    public void init(Positive annotation) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

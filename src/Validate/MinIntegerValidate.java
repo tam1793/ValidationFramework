@@ -5,6 +5,7 @@
  */
 package Validate;
 
+import Annotation.MinInteger;
 import java.util.Collection;
 import java.util.Map;
 
@@ -12,7 +13,7 @@ import java.util.Map;
  *
  * @author tamnnq
  */
-public class MinIntegerValidate extends AbstractValidate {
+public class MinIntegerValidate extends AbstractValidate<MinInteger> {
 
     private int min;
 
@@ -29,6 +30,11 @@ public class MinIntegerValidate extends AbstractValidate {
 
     public void setMin(int min) {
         this.min = min;
+    }
+
+    @Override
+    public void init(MinInteger annotation) {
+        this.min = annotation.value();
     }
 
 }

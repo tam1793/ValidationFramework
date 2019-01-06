@@ -14,36 +14,27 @@ import Validate.EmailValidate;
  * @author tamnnq
  */
 public class EmailValidation extends AbstractValidation<Email,EmailValidate> {
-
-    private static final String EMAIL_PATTERN
-            = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-            + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-
     private String message;
-    
+    private String target;
+
     @Override
-    protected AbstractValidation init(Email annotation) {
+    protected String getMessage() {
+        return this.message;
+    }
+
+    @Override
+    protected String getTarget() {
+        return this.target;
+    }
+
+    @Override
+    protected Class<? extends AbstractValidate> getValidate() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void init(Email annotation) {
         this.message = annotation.message();
-        return null;
-    }
-
-    @Override
-    protected String getMessage(Email annotation) {
-        return annotation.message();
-    }
-
-    @Override
-    protected String getTarget(Email annotation) {
-        return annotation.target();
-    }
-
-    @Override
-    protected Class<? extends AbstractValidate> getValidate(Email annotation) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    protected EmailValidate init(Email annotation, AbstractValidate validate) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.target = annotation.target();
     }
 }

@@ -5,13 +5,14 @@
  */
 package Validate;
 
+import Annotation.Regex;
 import java.util.regex.Pattern;
 
 /**
  *
  * @author tamnnq
  */
-public class RegexValidate extends AbstractValidate {
+public class RegexValidate extends AbstractValidate<Regex> {
 
     private String regex;
     
@@ -30,6 +31,11 @@ public class RegexValidate extends AbstractValidate {
     
     public void setRegex(String regex) {
         this.regex = regex;
+    }
+
+    @Override
+    public void init(Regex annotation) {
+        this.regex = annotation.value();
     }
 
 }
