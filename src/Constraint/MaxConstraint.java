@@ -5,18 +5,18 @@
  */
 package Constraint;
 
-import Annotation.Max;
+import Annotation.MaxInteger;
 
 /**
  *
  * @author tamnnq
  */
-public class MaxConstraint implements ConstraintInterface<Max, Integer> {
+public class MaxConstraint implements ConstraintInterface<MaxInteger, Integer> {
 
     private int max;
     
     @Override
-    public void initialize(Max annotation) {
+    public void initialize(MaxInteger annotation) {
         max = annotation.value();
     }
 

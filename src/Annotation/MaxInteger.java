@@ -5,8 +5,7 @@
  */
 package Annotation;
 
-import Validation.EmailValidation;
-import java.lang.annotation.Annotation;
+import Validate.MaxIntegerValidate;
 import static java.lang.annotation.ElementType.FIELD;
 import java.lang.annotation.Retention;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
@@ -18,8 +17,13 @@ import java.lang.annotation.Target;
  */
 @Target({FIELD})
 @Retention(RUNTIME)
-@Constraint(validatedBy = EmailValidation.class)
-public @interface CompositeValidation {
+@Constraint(validatedBy = MaxIntegerValidate.class)
+public @interface MaxInteger {
 
-    Class<? extends Annotation>[] listValidation();
+    String target() default "this";
+
+    String message() default "This field value is too big.";
+
+    int value();
+
 }

@@ -5,7 +5,7 @@
  */
 package Annotation;
 
-import Validation.NullValidation;
+import Validate.RegexValidate;
 import static java.lang.annotation.ElementType.FIELD;
 import java.lang.annotation.Retention;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
@@ -17,11 +17,13 @@ import java.lang.annotation.Target;
  */
 @Target({FIELD})
 @Retention(RUNTIME)
-@Constraint(validatedBy = NullValidation.class)
-public @interface Null {
+@Constraint(validatedBy = RegexValidate.class)
+public @interface Regex {
 
     String target() default "this";
 
-    String message() default "This field must be null.";
+    String message() default "This field value is invalid pattern format.";
+
+    String value();
 
 }

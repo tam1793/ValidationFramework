@@ -5,35 +5,34 @@
  */
 package Validation;
 
-import Annotation.Pattern;
-import Validate.AbstractValidate;
-import java.util.regex.Matcher;
+import Annotation.MaxInteger;
 
 /**
  *
  * @author tamnnq
  */
-public class PatternValidation extends AbstractValidation<Pattern> {
+public class MaxIntegerValidation extends AbstractValidation<MaxInteger> {
 
-    private String pattern;
+    private int max;
 
     @Override
-    protected void init(Pattern annotation) {
-        pattern = annotation.value();
+    protected void init(MaxInteger annotation) {
+        max = annotation.value();
+        return null;
     }
 
     @Override
-    protected String getMessage(Pattern annotation) {
+    protected String getMessage(MaxInteger annotation) {
         return annotation.message();
     }
 
     @Override
-    protected String getTarget(Pattern annotation) {
+    protected String getTarget(MaxInteger annotation) {
         return annotation.target();
     }
 
     @Override
-    protected Class<? extends AbstractValidate> getValidate(Pattern annotation) {
+    protected Class<? extends AbstractValidate> getValidate(Max annotation) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

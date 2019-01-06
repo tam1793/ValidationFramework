@@ -7,12 +7,13 @@ package Validation;
 
 import Annotation.Email;
 import Validate.AbstractValidate;
+import Validate.EmailValidate;
 
 /**
  *
  * @author tamnnq
  */
-public class EmailValidation extends AbstractValidation<Email> {
+public class EmailValidation extends AbstractValidation<Email,EmailValidate> {
 
     private static final String EMAIL_PATTERN
             = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
@@ -35,6 +36,11 @@ public class EmailValidation extends AbstractValidation<Email> {
 
     @Override
     protected Class<? extends AbstractValidate> getValidate(Email annotation) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    protected EmailValidate init(Email annotation, AbstractValidate validate) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

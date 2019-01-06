@@ -40,4 +40,10 @@ public class LengthValidation extends AbstractValidation<Length> {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    protected AbstractValidate init(Length annotation, AbstractValidate validate) {
+        
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

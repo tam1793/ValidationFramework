@@ -5,7 +5,7 @@
  */
 package Annotation;
 
-import Validation.EmailValidation;
+import Validate.EmailValidate;
 import static java.lang.annotation.ElementType.FIELD;
 import java.lang.annotation.Retention;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
@@ -17,7 +17,7 @@ import java.lang.annotation.Target;
  */
 @Target({FIELD})
 @Retention(RUNTIME)
-@Constraint(validatedBy = EmailValidation.class)
+@Constraint(validatedBy = EmailValidate.class)
 public @interface Email {
 
     String target() default "this";
