@@ -6,6 +6,7 @@
 package Validation;
 
 import Annotation.Pattern;
+import Validate.AbstractValidate;
 import java.util.regex.Matcher;
 
 /**
@@ -29,6 +30,11 @@ public class PatternValidation extends AbstractValidation<Pattern> {
     @Override
     protected String getTarget(Pattern annotation) {
         return annotation.target();
+    }
+
+    @Override
+    protected Class<? extends AbstractValidate> getValidate(Pattern annotation) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

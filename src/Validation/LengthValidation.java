@@ -6,6 +6,7 @@
 package Validation;
 
 import Annotation.Length;
+import Validate.AbstractValidate;
 
 /**
  *
@@ -17,9 +18,11 @@ public class LengthValidation extends AbstractValidation<Length> {
     private int max;
 
     @Override
-    protected void init(Length annotation) {
+    protected AbstractValidate init(Length annotation) {
         min = annotation.min();
         max = annotation.max();
+        
+        return null;
     }
 
     @Override
@@ -30,6 +33,11 @@ public class LengthValidation extends AbstractValidation<Length> {
     @Override
     protected String getTarget(Length annotation) {
         return annotation.target();
+    }
+
+    @Override
+    protected Class<? extends AbstractValidate> getValidate(Length annotation) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

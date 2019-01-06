@@ -6,6 +6,7 @@
 package Validation;
 
 import Annotation.Max;
+import Validate.AbstractValidate;
 
 /**
  *
@@ -16,8 +17,9 @@ public class MaxValidation extends AbstractValidation<Max> {
     private int max;
 
     @Override
-    protected void init(Max annotation) {
+    protected AbstractValidate init(Max annotation) {
         max = annotation.value();
+        return null;
     }
 
     @Override
@@ -28,6 +30,11 @@ public class MaxValidation extends AbstractValidation<Max> {
     @Override
     protected String getTarget(Max annotation) {
         return annotation.target();
+    }
+
+    @Override
+    protected Class<? extends AbstractValidate> getValidate(Max annotation) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
