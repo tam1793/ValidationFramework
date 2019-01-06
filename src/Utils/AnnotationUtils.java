@@ -6,7 +6,7 @@
 package Utils;
 
 import Annotation.Constraint;
-import Validate.AbstractValidate;
+import Validation.Validate.AbstractValidate;
 import java.lang.annotation.Annotation;
 
 /**

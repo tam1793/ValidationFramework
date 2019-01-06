@@ -7,8 +7,8 @@ package Validation;
 
 import Annotation.Email;
 import Utils.AnnotationUtils;
-import Validate.AbstractValidate;
-import Validate.EmailValidate;
+import Validation.Validate.AbstractValidate;
+import Validation.Validate.EmailValidate;
 
 /**
  *
@@ -30,6 +30,7 @@ public class EmailValidation extends AbstractValidation<Email,EmailValidate> {
 
     @Override
     public void init(Email annotation) {
+        super.init(annotation);
         this.message = annotation.message();
         this.target = annotation.target();
     }

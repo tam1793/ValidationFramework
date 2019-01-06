@@ -3,29 +3,32 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Validate;
+package Validation.Validate;
 
-import Annotation.Positive;
+import Annotation.MaxInteger;
 
 /**
  *
  * @author tamnnq
  */
-public class PositiveValidate extends AbstractValidate<Positive> {
+public class MaxIntegerValidate extends AbstractValidate<MaxInteger> {
+
+    private int max;
 
     @Override
     protected boolean validate(Object value) {
         if (value == null) {
             return true;
         }
-        if (value instanceof Number) {
-            return (Integer) value > 0;
+        if (value instanceof Integer) {
+            return (Integer) value <= max;
         }
         return false;
     }
 
     @Override
-    public void init(Positive annotation) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void init(MaxInteger annotation) {
+        this.max = annotation.value();
     }
+
 }

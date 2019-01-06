@@ -7,7 +7,7 @@ package Validation;
 
 import Annotation.Positive;
 import Utils.AnnotationUtils;
-import Validate.PositiveValidate;
+import Validation.Validate.PositiveValidate;
 
 /**
  *
@@ -30,6 +30,7 @@ public class PositiveValidation extends AbstractValidation<Positive, PositiveVal
 
     @Override
     public void init(Positive annotation) {
+        super.init(annotation);
         this.message = annotation.message();
         this.target = annotation.target();
     }

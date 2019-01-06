@@ -1,11 +1,11 @@
 
 import Annotation.Email;
-import Annotation.NotNull;
+import Annotation.MaxInteger;
 import ValidationResult.ValidationResult;
 import Validator.Validator;
 import java.util.HashMap;
 import Annotation.MinInteger;
-import Annotation.MaxInteger;
+import Annotation.NotNull;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -23,14 +23,14 @@ public class Demo {
      */
     public static class User {
 
-//        @NotNull(message = "test mess not null")
+        @NotNull(message = "test mess not null")
         String name;
 
-//        @MinInteger(message = "You are to young", value = 15)
-//        @Email(message = "Demo fail")
+        @MinInteger(message = "You are to young", value = 15)
+        @MaxInteger(message = "You are to old", value = 30)
         Integer age;
 
-        @MinInteger(message = "Test field in field", value = 2, target = "this.age.asd")
+        @MinInteger(message = "Test field in field", value = 2, target = "this.age")
         public User user;
 
         public void setName(String name) {

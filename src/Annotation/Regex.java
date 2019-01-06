@@ -5,7 +5,7 @@
  */
 package Annotation;
 
-import Validate.RegexValidate;
+import Validation.Validate.RegexValidate;
 import static java.lang.annotation.ElementType.FIELD;
 import java.lang.annotation.Retention;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;

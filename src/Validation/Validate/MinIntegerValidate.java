@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Validate;
+package Validation.Validate;
 
-import Annotation.MaxInteger;
+import Annotation.MinInteger;
 
 /**
  *
  * @author tamnnq
  */
-public class MaxIntegerValidate extends AbstractValidate<MaxInteger> {
+public class MinIntegerValidate extends AbstractValidate<MinInteger> {
 
-    private int max;
+    private int min;
 
     @Override
     protected boolean validate(Object value) {
@@ -21,14 +21,14 @@ public class MaxIntegerValidate extends AbstractValidate<MaxInteger> {
             return true;
         }
         if (value instanceof Integer) {
-            return (Integer) value <= max;
+            return (Integer) value >= min;
         }
         return false;
     }
 
     @Override
-    public void init(MaxInteger annotation) {
-        this.max = annotation.value();
+    public void init(MinInteger annotation) {
+        this.min = annotation.value();
     }
 
 }

@@ -5,7 +5,7 @@
  */
 package Annotation;
 
-import Validate.LengthValidate;
+import Validation.Validate.LengthValidate;
 import static java.lang.annotation.ElementType.FIELD;
 import java.lang.annotation.Retention;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;

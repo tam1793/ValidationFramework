@@ -19,7 +19,6 @@ public class ValidationFactory {
 
     public static void init() {
         executeContent.put(Email.class.getName(), EmailValidation.class);
-//        executeContent.put(Empty.class.getName(), EmailValidation.class);
         executeContent.put(Length.class.getName(), LengthValidation.class);
         executeContent.put(MaxInteger.class.getName(), MaxIntegerValidation.class);
         executeContent.put(MinInteger.class.getName(), MinIntegerValidation.class);

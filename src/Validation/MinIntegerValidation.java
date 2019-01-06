@@ -7,7 +7,7 @@ package Validation;
 
 import Annotation.MinInteger;
 import Utils.AnnotationUtils;
-import Validate.MinIntegerValidate;
+import Validation.Validate.MinIntegerValidate;
 
 /**
  *
@@ -30,6 +30,7 @@ public class MinIntegerValidation extends AbstractValidation<MinInteger, MinInte
 
     @Override
     public void init(MinInteger annotation) {
+        super.init(annotation);
         this.message = annotation.message();
         this.target = annotation.target();
     }

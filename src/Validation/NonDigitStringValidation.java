@@ -7,7 +7,7 @@ package Validation;
 
 import Annotation.NonDigitString;
 import Utils.AnnotationUtils;
-import Validate.NonDigitStringValidate;
+import Validation.Validate.NonDigitStringValidate;
 
 /**
  *
@@ -30,6 +30,7 @@ public class NonDigitStringValidation extends AbstractValidation<NonDigitString,
 
     @Override
     public void init(NonDigitString annotation) {
+        super.init(annotation);
         this.message = annotation.message();
         this.target = annotation.target();
     }

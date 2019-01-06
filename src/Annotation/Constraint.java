@@ -5,7 +5,7 @@
  */
 package Annotation;
 
-import Validate.AbstractValidate;
+import Validation.Validate.AbstractValidate;
 import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
 import java.lang.annotation.Retention;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;

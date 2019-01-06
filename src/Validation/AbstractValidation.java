@@ -5,7 +5,7 @@
  */
 package Validation;
 
-import Validate.AbstractValidate;
+import Validation.Validate.AbstractValidate;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 
@@ -15,7 +15,17 @@ import java.lang.reflect.Field;
  */
 public abstract class AbstractValidation<T extends Annotation, K extends AbstractValidate> {
 
-    abstract public void init(T annotation);
+    private AbstractValidate<T> validate;
+
+    public void init(T annotation) {
+        try {
+            Class<K> validateClass = getValidate(annotation);
+            this.validate = (K) validateClass.newInstance();
+            this.validate.init(annotation);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+    }
 
     abstract public String getMessage();
 
@@ -26,12 +36,9 @@ public abstract class AbstractValidation<T extends Annotation, K extends Abstrac
     public boolean execute(T annotation, Object obj, Field field) {
         try {
             init(annotation);
-            Class<K> validateClass = getValidate(annotation);
-            K validate = (K) validateClass.newInstance();
-            validate.init(annotation);
-            return validate.validate(obj, field, getTarget());
+            return this.validate.validate(obj, field, getTarget());
         } catch (Exception ex) {
-            System.err.println("ERROR: "+ex.getMessage());
+            System.err.println("ERROR: " + ex.getMessage());
         }
         return false;
 

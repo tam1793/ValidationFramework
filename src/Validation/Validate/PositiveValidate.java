@@ -3,32 +3,29 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Validate;
+package Validation.Validate;
 
-import Annotation.MinInteger;
+import Annotation.Positive;
 
 /**
  *
  * @author tamnnq
  */
-public class MinIntegerValidate extends AbstractValidate<MinInteger> {
-
-    private int min;
+public class PositiveValidate extends AbstractValidate<Positive> {
 
     @Override
     protected boolean validate(Object value) {
         if (value == null) {
             return true;
         }
-        if (value instanceof Integer) {
-            return (Integer) value >= min;
+        if (value instanceof Number) {
+            return (Integer) value > 0;
         }
         return false;
     }
 
     @Override
-    public void init(MinInteger annotation) {
-        this.min = annotation.value();
+    public void init(Positive annotation) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
 }

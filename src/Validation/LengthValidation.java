@@ -7,9 +7,9 @@ package Validation;
 
 import Annotation.Length;
 import Utils.AnnotationUtils;
-import Validate.AbstractValidate;
-import Validate.EmailValidate;
-import Validate.LengthValidate;
+import Validation.Validate.AbstractValidate;
+import Validation.Validate.EmailValidate;
+import Validation.Validate.LengthValidate;
 
 /**
  *
@@ -32,6 +32,7 @@ public class LengthValidation extends AbstractValidation<Length, LengthValidate>
 
     @Override
     public void init(Length annotation) {
+        super.init(annotation);
         this.message = annotation.message();
         this.target = annotation.target();
     }

@@ -7,7 +7,7 @@ package Validation;
 
 import Annotation.Regex;
 import Utils.AnnotationUtils;
-import Validate.RegexValidate;
+import Validation.Validate.RegexValidate;
 
 /**
  *
@@ -30,6 +30,7 @@ public class RegexValidation extends AbstractValidation<Regex, RegexValidate> {
 
     @Override
     public void init(Regex annotation) {
+        super.init(annotation);
         this.message = annotation.message();
         this.target = annotation.target();
     }

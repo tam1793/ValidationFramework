@@ -7,7 +7,7 @@ package Validation;
 
 import Annotation.NotNull;
 import Utils.AnnotationUtils;
-import Validate.NotNullValidate;
+import Validation.Validate.NotNullValidate;
 
 /**
  *
@@ -30,6 +30,7 @@ public class NotNullValidation extends AbstractValidation<NotNull, NotNullValida
 
     @Override
     public void init(NotNull annotation) {
+        super.init(annotation);
         this.message = annotation.message();
         this.target = annotation.target();
     }

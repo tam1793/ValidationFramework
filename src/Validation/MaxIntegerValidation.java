@@ -7,7 +7,7 @@ package Validation;
 
 import Annotation.MaxInteger;
 import Utils.AnnotationUtils;
-import Validate.MaxIntegerValidate;
+import Validation.Validate.MaxIntegerValidate;
 
 /**
  *
@@ -30,6 +30,7 @@ public class MaxIntegerValidation extends AbstractValidation<MaxInteger, MaxInte
 
     @Override
     public void init(MaxInteger annotation) {
+        super.init(annotation);
         this.message = annotation.message();
         this.target = annotation.target();
     }

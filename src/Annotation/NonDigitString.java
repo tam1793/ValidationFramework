@@ -5,7 +5,7 @@
  */
 package Annotation;
 
-import Validate.NonDigitStringValidate;
+import Validation.Validate.NonDigitStringValidate;
 import static java.lang.annotation.ElementType.FIELD;
 import java.lang.annotation.Retention;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;

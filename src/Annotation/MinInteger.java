@@ -5,7 +5,7 @@
  */
 package Annotation;
 
-import Validate.MinIntegerValidate;
+import Validation.Validate.MinIntegerValidate;
 import static java.lang.annotation.ElementType.FIELD;
 import java.lang.annotation.Retention;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
