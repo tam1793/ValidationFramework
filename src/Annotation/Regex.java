@@ -5,7 +5,7 @@
  */
 package Annotation;
 
-import Validation.PatternValidation;
+import Validate.RegexValidate;
 import static java.lang.annotation.ElementType.FIELD;
 import java.lang.annotation.Retention;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
@@ -17,8 +17,8 @@ import java.lang.annotation.Target;
  */
 @Target({FIELD})
 @Retention(RUNTIME)
-@Constraint(validatedBy = PatternValidation.class)
-public @interface Pattern {
+@Constraint(validatedBy = RegexValidate.class)
+public @interface Regex {
 
     String target() default "this";
 

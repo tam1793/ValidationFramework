@@ -5,7 +5,7 @@
  */
 package Annotation;
 
-import Validation.LengthValidation;
+import Validate.LengthValidate;
 import static java.lang.annotation.ElementType.FIELD;
 import java.lang.annotation.Retention;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
@@ -17,7 +17,7 @@ import java.lang.annotation.Target;
  */
 @Target({FIELD})
 @Retention(RUNTIME)
-@Constraint(validatedBy = LengthValidation.class)
+@Constraint(validatedBy = LengthValidate.class)
 public @interface Length {
 
     String target() default "this";

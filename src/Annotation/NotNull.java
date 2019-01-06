@@ -5,7 +5,7 @@
  */
 package Annotation;
 
-import Validation.NotNullValidation;
+import Validate.NotNullValidate;
 import static java.lang.annotation.ElementType.FIELD;
 import java.lang.annotation.Retention;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
@@ -17,7 +17,7 @@ import java.lang.annotation.Target;
  */
 @Target({FIELD})
 @Retention(RUNTIME)
-@Constraint(validatedBy = NotNullValidation.class)
+@Constraint(validatedBy = NotNullValidate.class)
 public @interface NotNull {
 
     String target() default "this";

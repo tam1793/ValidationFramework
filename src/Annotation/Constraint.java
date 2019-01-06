@@ -5,7 +5,7 @@
  */
 package Annotation;
 
-import Validation.AbstractValidation;
+import Validate.AbstractValidate;
 import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
 import java.lang.annotation.Retention;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
@@ -19,5 +19,5 @@ import java.lang.annotation.Target;
 @Retention(RUNTIME)
 public @interface Constraint {
 
-    Class<? extends AbstractValidation<?>> validatedBy();
+    Class<? extends AbstractValidate> validatedBy();
 }

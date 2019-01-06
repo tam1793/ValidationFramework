@@ -5,29 +5,29 @@
  */
 package Validation;
 
-import Annotation.Pattern;
+import Annotation.Regex;
 import java.util.regex.Matcher;
 
 /**
  *
  * @author tamnnq
  */
-public class PatternValidation extends AbstractValidation<Pattern> {
+public class RegexValidation extends AbstractValidation<Regex> {
 
     private String pattern;
 
     @Override
-    protected void init(Pattern annotation) {
+    protected void init(Regex annotation) {
         pattern = annotation.value();
     }
 
     @Override
-    protected String getMessage(Pattern annotation) {
+    protected String getMessage(Regex annotation) {
         return annotation.message();
     }
 
     @Override
-    protected String getTarget(Pattern annotation) {
+    protected String getTarget(Regex annotation) {
         return annotation.target();
     }
 

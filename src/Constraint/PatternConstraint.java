@@ -5,19 +5,19 @@
  */
 package Constraint;
 
-import Annotation.Pattern;
 import java.util.regex.Matcher;
+import Annotation.Regex;
 
 /**
  *
  * @author tamnnq
  */
-public class PatternConstraint implements ConstraintInterface<Pattern, String> {
+public class PatternConstraint implements ConstraintInterface<Regex, String> {
 
     private String pattern;
     
     @Override
-    public void initialize(Pattern annotation) {
+    public void initialize(Regex annotation) {
         pattern = annotation.value();
     }
 

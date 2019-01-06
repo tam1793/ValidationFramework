@@ -20,7 +20,7 @@ public class LengthValidate extends AbstractValidate {
     @Override
     protected boolean validate(Object value) {
         if (value == null) {
-            return true;
+            return true;    
         };
         
         int length = -1;
