@@ -31,6 +31,6 @@ public abstract class AbstractValidate<T extends Annotation>{
         return false;
     }
 
-    protected abstract AbstractValidate init(T annotation);
+    public abstract AbstractValidate init(T annotation);
     protected abstract boolean validate(Object value);
 }
