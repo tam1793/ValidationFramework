@@ -12,7 +12,7 @@ import java.util.HashMap;
  *
  * @author tamnnq
  */
-public class FactoryValidation {
+public class ValidationFactory {
 
     private static HashMap<String, Class<? extends AbstractValidation>> executeContent = new HashMap<>();
 
