@@ -6,13 +6,14 @@
 package Validate;
 
 import Utils.FieldUtils;
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 
 /**
  *
  * @author tamnnq
  */
-public abstract class AbstractValidate {
+public abstract class AbstractValidate<T extends Annotation>{
 
     public boolean validate(Object object, Field field, String target) {
         try {
@@ -30,5 +31,6 @@ public abstract class AbstractValidate {
         return false;
     }
 
+    protected abstract AbstractValidate init(T annotation);
     protected abstract boolean validate(Object value);
 }

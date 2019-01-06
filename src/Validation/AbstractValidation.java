@@ -13,9 +13,9 @@ import java.lang.reflect.Field;
  *
  * @author tamnnq
  */
-public abstract class AbstractValidation<T extends Annotation,K extends AbstractValidate> {
+public abstract class AbstractValidation<T extends Annotation, K extends AbstractValidate> {
 
-    abstract protected K init(T annotation, AbstractValidate validate);
+    abstract protected AbstractValidation init(T annotation);
 
     abstract protected String getMessage(T annotation);
 

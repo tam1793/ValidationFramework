@@ -19,8 +19,11 @@ public class EmailValidation extends AbstractValidation<Email,EmailValidate> {
             = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
             + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
+    private String message;
+    
     @Override
-    protected AbstractValidate init(Email annotation) {
+    protected AbstractValidation init(Email annotation) {
+        this.message = annotation.message();
         return null;
     }
 

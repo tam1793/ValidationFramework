@@ -5,13 +5,15 @@
  */
 package Validate;
 
+import Annotation.Email;
+import java.lang.annotation.Annotation;
 import java.util.regex.Pattern;
 
 /**
  *
  * @author tamnnq
  */
-public class EmailValidate extends AbstractValidate {
+public class EmailValidate extends AbstractValidate<Email> {
 
     private static final String EMAIL_PATTERN = 
 		"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
@@ -27,6 +29,11 @@ public class EmailValidate extends AbstractValidate {
         else{
             return false;
         }
+    }
+
+    @Override
+    protected AbstractValidate init(Email annotation) {
+        return this;
     }
 
 }
