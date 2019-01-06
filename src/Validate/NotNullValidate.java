@@ -5,15 +5,21 @@
  */
 package Validate;
 
+import Annotation.NotNull;
+
 /**
  *
  * @author tamnnq
  */
-public class NotNullValidate extends AbstractValidate {
+public class NotNullValidate extends AbstractValidate<NotNull> {
 
     @Override
     protected boolean validate(Object value) {
         return value != null;
+    }
+
+    @Override
+    public void init(NotNull annotation) {
     }
 
 }

@@ -5,6 +5,7 @@
  */
 package Validate;
 
+import Annotation.Length;
 import java.util.Collection;
 import java.util.Map;
 
@@ -12,7 +13,7 @@ import java.util.Map;
  *
  * @author tamnnq
  */
-public class LengthValidate extends AbstractValidate {
+public class LengthValidate extends AbstractValidate<Length> {
 
     private int min;
     private int max;
@@ -20,26 +21,24 @@ public class LengthValidate extends AbstractValidate {
     @Override
     protected boolean validate(Object value) {
         if (value == null) {
-            return true;    
+            return true;
         };
-        
+
         int length = -1;
-        if(value instanceof String) {
-            length = ((String)value).length();
-        } else if(value instanceof Collection) {
-            length = ((Collection)value).size();
-        }else if(value instanceof Map) {
-            length = ((Map)value).size();
+        if (value instanceof String) {
+            length = ((String) value).length();
+        } else if (value instanceof Collection) {
+            length = ((Collection) value).size();
+        } else if (value instanceof Map) {
+            length = ((Map) value).size();
         }
         return length >= min && length <= max;
     }
 
-    public void setMaxLength(int maxLength) {
-        this.max = maxLength;
+    @Override
+    public void init(Length annotation) {
+        this.min = annotation.min();
+        this.max = annotation.max();
     }
-    
-    public void setMinLength(int minLength) {
-        this.min = minLength;
-    }
-    
+
 }

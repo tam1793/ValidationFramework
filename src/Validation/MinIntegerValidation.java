@@ -11,7 +11,7 @@ import Annotation.MinInteger;
  *
  * @author tamnnq
  */
-public class MinIntegerValidation extends AbstractValidation<MinInteger> {
+public class MinIntegerValidation extends AbstractValidation<MinInteger,MinIntegerValidation> {
 
     private int min;
 

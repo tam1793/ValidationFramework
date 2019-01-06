@@ -6,12 +6,13 @@
 package Validation;
 
 import Annotation.NotNull;
+import Validate.NotNullValidate;
 
 /**
  *
  * @author tamnnq
  */
-public class NotNullValidation extends AbstractValidation<NotNull> {
+public class NotNullValidation extends AbstractValidation<NotNull,NotNullValidate> {
 
     @Override
     protected void init(NotNull annotation) {

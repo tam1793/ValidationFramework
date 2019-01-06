@@ -15,19 +15,20 @@ import java.lang.reflect.Field;
  */
 public abstract class AbstractValidation<T extends Annotation, K extends AbstractValidate> {
 
-    abstract protected AbstractValidation init(T annotation);
+    abstract public void init(T annotation);
 
-    abstract protected String getMessage(T annotation);
+    abstract protected String getMessage();
 
-    abstract protected String getTarget(T annotation);
+    abstract protected String getTarget();
 
-    abstract protected Class<K> getValidate(T annotation);
+    abstract protected Class<K> getValidate();
 
     public boolean execute(T annotation, Object obj, Field field) {
         try {
-            Class validateClass = getValidate(annotation);
+            Class validateClass = getValidate();
             AbstractValidate validate = (AbstractValidate) validateClass.newInstance();
-
+            validate.init(annotation);
+            return validate.validate(obj, field, getTarget());
         } catch (Exception ex) {
             System.err.println(ex.getMessage());
         }

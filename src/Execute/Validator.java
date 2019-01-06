@@ -6,7 +6,7 @@
 package Execute;
 
 import Annotation.Constraint;
-import Validation.FactoryValidation;
+import Validation.ValidationFactory;
 import Validation.AbstractValidation;
 import ValidationContext.MetaData;
 import ValidationContext.ValidationContext;
@@ -33,7 +33,7 @@ public class Validator {
             try {
                 if (instance == null) {
                     instance = new Validator();
-                    FactoryValidation.init();
+                    ValidationFactory.init();
                 }
             } finally {
                 LOCK.unlock();

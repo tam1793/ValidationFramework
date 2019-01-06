@@ -5,6 +5,7 @@
  */
 package Validate;
 
+import Annotation.MaxInteger;
 import java.util.Collection;
 import java.util.Map;
 
@@ -12,7 +13,7 @@ import java.util.Map;
  *
  * @author tamnnq
  */
-public class MaxIntegerValidate extends AbstractValidate {
+public class MaxIntegerValidate extends AbstractValidate<MaxInteger> {
 
     private int max;
 
@@ -22,13 +23,14 @@ public class MaxIntegerValidate extends AbstractValidate {
             return true;
         }
         if (value instanceof Integer) {
-            return (Integer)value <= max;
+            return (Integer) value <= max;
         }
         return false;
     }
 
-    public void setMax(int max) {
-        this.max = max;
+    @Override
+    public void init(MaxInteger annotation) {
+        this.max = annotation.value();
     }
 
 }

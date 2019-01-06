@@ -6,12 +6,13 @@
 package Validation;
 
 import Annotation.Positive;
+import Validate.PositiveValidate;
 
 /**
  *
  * @author tamnnq
  */
-public class PositiveValidation extends AbstractValidation<Positive> {
+public class PositiveValidation extends AbstractValidation<Positive,PositiveValidate> {
 
     @Override
     protected void init(Positive annotation) {

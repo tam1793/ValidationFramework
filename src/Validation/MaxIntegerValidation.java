@@ -6,12 +6,13 @@
 package Validation;
 
 import Annotation.MaxInteger;
+import Validate.MaxIntegerValidate;
 
 /**
  *
  * @author tamnnq
  */
-public class MaxIntegerValidation extends AbstractValidation<MaxInteger> {
+public class MaxIntegerValidation extends AbstractValidation<MaxInteger,MaxIntegerValidate> {
 
     private int max;
 

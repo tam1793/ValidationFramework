@@ -32,8 +32,7 @@ public class EmailValidate extends AbstractValidate<Email> {
     }
 
     @Override
-    protected AbstractValidate init(Email annotation) {
-        return this;
+    public void init(Email annotation) {
     }
 
 }

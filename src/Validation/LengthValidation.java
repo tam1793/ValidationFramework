@@ -7,12 +7,13 @@ package Validation;
 
 import Annotation.Length;
 import Validate.AbstractValidate;
+import Validate.LengthValidate;
 
 /**
  *
  * @author tamnnq
  */
-public class LengthValidation extends AbstractValidation<Length> {
+public class LengthValidation extends AbstractValidation<Length,LengthValidate> {
 
     private int min;
     private int max;

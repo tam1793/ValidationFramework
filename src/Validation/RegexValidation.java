@@ -6,13 +6,14 @@
 package Validation;
 
 import Annotation.Regex;
+import Validate.RegexValidate;
 import java.util.regex.Matcher;
 
 /**
  *
  * @author tamnnq
  */
-public class RegexValidation extends AbstractValidation<Regex> {
+public class RegexValidation extends AbstractValidation<Regex,RegexValidate> {
 
     private String pattern;
 

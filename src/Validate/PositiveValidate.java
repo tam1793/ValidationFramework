@@ -7,12 +7,13 @@ package Validate;
 
 import java.util.Collection;
 import java.util.Map;
+import javax.annotation.PostConstruct;
 
 /**
  *
  * @author tamnnq
  */
-public class PositiveValidate extends AbstractValidate {
+public class PositiveValidate extends AbstractValidate<PostConstruct> {
 
     @Override
     protected boolean validate(Object value) {
@@ -20,8 +21,12 @@ public class PositiveValidate extends AbstractValidate {
             return true;
         }
         if (value instanceof Number) {
-            return (Integer)value > 0;
+            return (Integer) value > 0;
         }
         return false;
+    }
+
+    @Override
+    public void init(PostConstruct annotation) {
     }
 }

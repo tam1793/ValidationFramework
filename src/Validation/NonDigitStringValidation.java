@@ -6,12 +6,13 @@
 package Validation;
 
 import Annotation.NonDigitString;
+import Validate.NonDigitStringValidate;
 
 /**
  *
  * @author tamnnq
  */
-public class NonDigitStringValidation extends AbstractValidation<NonDigitString> {
+public class NonDigitStringValidation extends AbstractValidation<NonDigitString,NonDigitStringValidate> {
 
     @Override
     protected void init(NonDigitString annotation) {

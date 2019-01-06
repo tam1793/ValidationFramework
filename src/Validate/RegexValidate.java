@@ -5,31 +5,38 @@
  */
 package Validate;
 
+import Annotation.Regex;
 import java.util.regex.Pattern;
 
 /**
  *
  * @author tamnnq
  */
-public class RegexValidate extends AbstractValidate {
+public class RegexValidate extends AbstractValidate<Regex> {
 
     private String regex;
-    
+
     @Override
     protected boolean validate(Object value) {
-        if(value == null) return false;
-        if(value instanceof String){
+        if (value == null) {
+            return false;
+        }
+        if (value instanceof String) {
             String data = (String) value;
             Pattern r = Pattern.compile(regex);
             return r.matcher(data).matches();
-        }
-        else{
+        } else {
             return false;
         }
     }
-    
+
     public void setRegex(String regex) {
         this.regex = regex;
+    }
+
+    @Override
+    public void init(Regex annotation) {
+        this.regex = annotation.value();
     }
 
 }
