@@ -15,7 +15,7 @@ import java.lang.reflect.Field;
  */
 public abstract class AbstractValidate<T extends Annotation> {
 
-    String TARGET_PATTERN= "this(.([a-z]|[0-9]){1,}){0,}";
+    private String TARGET_PATTERN= "this(.([a-z]|[0-9]){1,}){0,}";
     public boolean validate(Object object, Field field, String target) {
         try {
             if(!target.matches(TARGET_PATTERN)){

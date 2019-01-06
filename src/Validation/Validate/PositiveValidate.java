@@ -26,6 +26,5 @@ public class PositiveValidate extends AbstractValidate<Positive> {
 
     @Override
     public void init(Positive annotation) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -14,10 +14,10 @@ import java.util.HashMap;
  */
 public class ValidationResult {
 
-    private Boolean isValid = true;
+    private boolean isValid = true;
     private HashMap<String, ArrayList<String>> errorMessage = new HashMap<String, ArrayList<String>>();
 
-    public Boolean getIsValid() {
+    public boolean getIsValid() {
         return isValid;
     }
 

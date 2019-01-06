@@ -30,10 +30,6 @@ public class RegexValidate extends AbstractValidate<Regex> {
         }
     }
 
-    public void setRegex(String regex) {
-        this.regex = regex;
-    }
-
     @Override
     public void init(Regex annotation) {
         this.regex = annotation.value();
